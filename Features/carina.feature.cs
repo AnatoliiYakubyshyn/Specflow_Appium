@@ -75,10 +75,17 @@ namespace Specflow_Appium.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Sign up with different data")]
-        public void SignUpWithDifferentData()
+        [NUnit.Framework.TestCaseAttribute("Tolia", "P", "Male", null)]
+        [NUnit.Framework.TestCaseAttribute("Olena", "p1", "Female", null)]
+        [NUnit.Framework.TestCaseAttribute("Olena", "p1234Q", "Female", null)]
+        [NUnit.Framework.TestCaseAttribute("Test user", "p1", "Female", null)]
+        public void SignUpWithDifferentData(string name, string password, string gender, string[] exampleTags)
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("name", name);
+            argumentsOfScenario.Add("password", password);
+            argumentsOfScenario.Add("gender", gender);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Sign up with different data", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 3
 this.ScenarioInitialize(scenarioInfo);
@@ -95,6 +102,12 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
 #line 5
     testRunner.When("I proceed to Sign up page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 6
+    testRunner.And(string.Format("Sign up with \"{0}\" and \"{1}\" and \"{2}\"", name, password, gender), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 7
+    testRunner.Then("Web View page is opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

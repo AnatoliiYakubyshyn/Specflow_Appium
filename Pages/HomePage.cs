@@ -17,8 +17,9 @@ namespace SpecflowAppium.Pages
         {
         }
 
-        public void ClickNextButton() {
+        public SignUpPage ClickNextButton() {
             nextbutton.Click();
+            return new SignUpPage(Driver);
         }
     }
 }
