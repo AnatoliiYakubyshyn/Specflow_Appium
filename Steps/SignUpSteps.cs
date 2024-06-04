@@ -29,33 +29,39 @@ namespace SpecflowAppium.Steps
         private WebViewPage _webViewPage;
 
 
-        public SignUpSteps(IWebDriver webDriver)
-        {
-            this.driver = webDriver;
-        }
+        // public SignUpSteps(IWebDriver webDriver)
+        // {
+        //     this.driver = webDriver;
+        // }
 
-        [Given("I am on Home page")]
+        // [Given("I am on Home page")]
+        // public void GivenIamOnHomePage()
+        // {
+        //     _homePage = new HomePage(driver);
+        // }
+
+        [Given("Hello")]
         public void GivenIamOnHomePage()
         {
-            _homePage = new HomePage(driver);
+           
         }
 
-        [When("I proceed to Sign up page")]
-        public void WhenIProceedToSignUpPage()
-        {
-           _signUpPage = _homePage.ClickNextButton();
-        }
+        // [When("I proceed to Sign up page")]
+        // public void WhenIProceedToSignUpPage()
+        // {
+        //    _signUpPage = _homePage.ClickNextButton();
+        // }
 
-        [When("Sign up with \"(.*)\" and \"(.*)\" and \"(.*)\"")]
-        public void WhenIEnterData(string name, string password, string gender)
-        {
-            Gender genderEnum = gender == "Male" ? Gender.MALE : Gender.FEMALE;
-            _webViewPage = _signUpPage.FillForm(name,password,genderEnum);
-        }
+        // [When("Sign up with \"(.*)\" and \"(.*)\" and \"(.*)\"")]
+        // public void WhenIEnterData(string name, string password, string gender)
+        // {
+        //     Gender genderEnum = gender == "Male" ? Gender.MALE : Gender.FEMALE;
+        //     _webViewPage = _signUpPage.FillForm(name,password,genderEnum);
+        // }
         
-        [Then("Web View page is opened")]
-        public void ThenWebViewPageIsOpened() {
-            Assert.IsTrue(_webViewPage.IsPageOpened());
-        }
+        // [Then("Web View page is opened")]
+        // public void ThenWebViewPageIsOpened() {
+        //     Assert.IsTrue(_webViewPage.IsPageOpened());
+        // }
     }
 }
