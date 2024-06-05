@@ -16,7 +16,7 @@ namespace SpecflowAppium.Hooks
     public class Hooks
     {
 
-        private IWebDriver driver;
+        private WindowsDriver<WindowsElement> driver;
 
         private readonly IObjectContainer _container;
 
@@ -25,11 +25,12 @@ namespace SpecflowAppium.Hooks
             _container = container;
         }
 
-        // [AfterScenario]
-        // public void TearDown()
-        // {
-        //     driver.Quit();
-        // }
+        [AfterScenario]
+        public void TearDown()
+        {
+            driver.CloseApp();
+            driver.Quit();
+        }
 
         [BeforeScenario(Order = 1)]
         public void FirstBeforeScenario(ScenarioContext scenarioContext)
@@ -41,11 +42,11 @@ namespace SpecflowAppium.Hooks
             Uri url = new Uri(urlString);
 
             // Initialize the WindowsDriver
-            var driver = new WindowsDriver<WindowsElement>(url, appiumOptions);
+            driver = new WindowsDriver<WindowsElement>(url, appiumOptions);
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
 
             // Register the driver instance
-            _container.RegisterInstanceAs<IWebDriver>(driver);
+            _container.RegisterInstanceAs<WindowsDriver<WindowsElement>>(driver);
 
         }
 
